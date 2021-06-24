@@ -12,4 +12,4 @@ https://hub.docker.com/repository/docker/sutanirojim/sutan-dev-test
 `$docker network create dev_network`
 
 #### Running image
-`$docker run -v /Users/sutan/workspace/dev-tester:/root/share --rm -it --network dev-network server-dev /app/start-server`
+`$docker run -v /Users/sutan/workspace/dev-tester:/root/share --rm -it --network dev-network sutan-dev-test /app/start-server`
