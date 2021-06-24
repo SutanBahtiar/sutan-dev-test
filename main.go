@@ -1,8 +1,8 @@
 package main
 
 const (
-	host     = "localhost"
-	port     = "5678"
+	host     = ""
+	port     = "8010"
 	connType = "tcp"
 )
 
