@@ -3,17 +3,17 @@ FROM golang:1.16-alpine3.13 AS builder
 LABEL maintainer="sutanirojim"
 WORKDIR /app
 COPY . .
-# RUN go build -o start-client .
-RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o start-client
+RUN go build -o start-client .
+# RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o start-client
 
 # run stage
-# FROM alpine:3.13
-# WORKDIR /app
-# COPY --from=builder /app/start-client .
-
-FROM scratch
+FROM alpine:3.13
 WORKDIR /app
 COPY --from=builder /app/start-client .
+
+# FROM scratch
+# WORKDIR /app
+# COPY --from=builder /app/start-client .
 
 # ENV PORT 8010
 EXPOSE 8010

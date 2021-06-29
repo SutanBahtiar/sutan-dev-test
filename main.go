@@ -1,9 +1,8 @@
 package main
 
 const (
-	host     = ""
-	port     = "8010"
-	connType = "tcp"
+	sockAdrr = "/root/share/socks.sock"
+	connType = "unix"
 )
 
 func main() {

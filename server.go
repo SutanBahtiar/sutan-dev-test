@@ -3,18 +3,23 @@ package main
 import (
 	"bufio"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net"
+	"os"
 	"strings"
 )
 
 // StartServer
 func StartServer() {
-	log.Printf("Starting %s server on %s:%s..", connType, host, port)
-	listener, err := net.Listen(connType, host+":"+port)
+	if err := os.RemoveAll(sockAdrr); err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("Listening network %s, %s", connType, sockAdrr)
+
+	listener, err := net.Listen(connType, sockAdrr)
 	if err != nil {
-		fmt.Println("Error starting server", err.Error())
+		log.Println("Error starting server", err.Error())
 	}
 
 	// close server when app close
@@ -25,7 +30,7 @@ func StartServer() {
 		// accept connection
 		conn, err := listener.Accept()
 		if err != nil {
-			fmt.Println("Error accept connection", err.Error())
+			log.Println("Error accept connection", err.Error())
 		}
 
 		// logId

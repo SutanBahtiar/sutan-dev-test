@@ -9,8 +9,7 @@ import (
 
 func StartClient() {
 	// Connecting to server
-	log.Printf("Connecting to %s server %s:%s", connType, host, port)
-	conn, err := net.Dial(connType, host+":"+port)
+	conn, err := net.Dial(connType, sockAdrr)
 	if err != nil {
 		log.Println("Error connecting to server", err.Error())
 		os.Exit(1)
