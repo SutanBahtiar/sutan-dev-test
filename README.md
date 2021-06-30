@@ -1,4 +1,4 @@
-# Simple tcp socket
+# unix domain socket example
 
 go run .
 
